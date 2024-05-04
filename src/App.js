@@ -1,28 +1,33 @@
 import './App.css';
-
-import { Container, Nav, Navbar } from 'react-bootstrap';
-
-import NavbarComponent from './components/navbar.jsx';
-
-// import Container from 'react-bootstrap/Container';
-// import Nav from 'react-bootstrap/Nav';
-// import Navbar from 'react-bootstrap/Navbar';
-// import Navbar from './components/navbar';
-
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SignIn from './Pages/signin';
+import Clone from './Pages/Clone';
+import SDPMigration from './Pages/SDPMigration';
 
 function App() {
   return (
-    
-    <div className="App">
-<NavbarComponent/>      
-    
-      </div>
-  );
+<BrowserRouter>
 
- 
-// export default ColorSchemesExample;  
+      <div className="App">
+      </div>
+
+  <Routes>
+      <Route path="/" element={<SignIn />}>          
+      </Route>
+      <Route path="/clone" element={<Clone />}>          
+      </Route>
+      <Route path="/migration" element={<SDPMigration />}>          
+      </Route>
+
+
+
+
+  </Routes>
+</BrowserRouter>
+  );
 
 }
 
 export default App;
+
+
