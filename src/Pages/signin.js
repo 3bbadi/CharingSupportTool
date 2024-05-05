@@ -3,18 +3,24 @@ import { Form, Button } from 'react-bootstrap';
 import MyForm from '../components/myForm';
 import logo from '../img/VodafoneLogo.png';
 import '../style/SignIn.css';
+import { useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState(''); // State to hold error message
+  //state >> error
+  //setError  is a function to manipulate the state(error)
+  //use useState is a function to set the initial value of the state 
 
   const handleSignIn = (formData) => {
-    const { username, password } = formData;
+    const { firstField , secondField } = formData;
 
     // Simulated authentication logic (replace with your actual authentication logic)
-    if (username === 'admin' && password === 'password') {
+    if (firstField === 'admin' && secondField === 'password') {
       // Successful authentication
       alert('Login successful!'); // Replace with desired action upon successful login
       setError('');
+      navigate('/clone');
     } else {
       // Failed authentication
       setError('Invalid username or password');
@@ -25,7 +31,6 @@ const SignIn = () => {
     <div>
      
         <img className="mb-4" src={logo} alt="" width="72" height="72" />
-        <h1 className="h3 mb-3 font-weight-normal">Login</h1>
         {error && <p className="error-msg">{error}</p>} {/* Render error message if error state is truthy */}
         
         <MyForm

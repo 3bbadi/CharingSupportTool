@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavbarComponent } from '../components/NavbarComponent';
 import { MigrationComponent } from '../components/MigrationComponent';
 import MyForm from '../components/myForm';
 
 const SDPMigration = () => {
+
+  // const[number,setNumber]=useState('');
+  // const[SDP,setSDP]=useState('');
+
+
   return(
     <div>
     <NavbarComponent/>
