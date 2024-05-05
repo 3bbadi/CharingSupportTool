@@ -20,11 +20,11 @@ const Clone = () => {
     if (Production.length === 10 &&  Test.length === 10){
       console.log("It's okaaaay");
     }else{
-      <ErrorPopup
+      // <ErrorPopup
         // show={showError}
         // errorMessage={errorMessage}
         // onClose={handleCloseError}
-      />
+      // />
       // alert('the two numbers should be 10 digits (10xxxxxxxx)');
       console.log("It's NOT okaaaay");
     }
