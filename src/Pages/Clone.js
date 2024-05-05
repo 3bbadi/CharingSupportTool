@@ -5,31 +5,25 @@ import MyForm from '../components/myForm';
 
 const Clone = () => {
   ///////////////////// create the state   //////////////////
-  const [Production,setProduction]=useState("");
-  const [Test,setTest]=useState("");
-  
-  /////////////////  function to update state  form form  //////////////////// 
-  const handleClone = (formData)=> {
-    setProduction((prevProduction) => formData.firstField);
-    setTest((prevTest) => formData.secondField);
-    
-  }
-  
-  ///////////// cloneValidation()
-    useEffect(() => {
-    if (Production.length === 10 &&  Test.length === 10){
-      console.log("It's okaaaay");
-    }else{
-      // <ErrorPopup
-        // show={showError}
-        // errorMessage={errorMessage}
-        // onClose={handleCloseError}
-      // />
-      // alert('the two numbers should be 10 digits (10xxxxxxxx)');
-      console.log("It's NOT okaaaay");
-    }
-  }, [Production, Test]);
+  const [Production, setProduction] = useState("");
+const [Test, setTest] = useState("");
 
+// Function to update state from form
+const handleClone = (formData) => {
+  // Perform validation
+  if (formData.firstField.length === 10 && formData.secondField.length === 10) {
+    // Update state if validation passes
+    setProduction(formData.firstField);
+    setTest(formData.secondField);
+    console.log("great")
+  } else {
+    // Handle validation failure (e.g., show error message, prevent state update)
+    // console.log("Validation failed: Production and Test must be 10 digits long");
+    // Optionally display error message or take other actions
+    // Example: setErrorPopupVisible(true);
+   alert('The two numbers should be 10 digits (10xxxxxxxx)');
+  }
+};
   
 
 
