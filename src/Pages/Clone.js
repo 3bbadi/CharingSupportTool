@@ -6,7 +6,7 @@ import MyForm from '../components/myForm';
 const Clone = () => {
   ///////////////////// create the state   //////////////////
   const [Production, setProduction] = useState("");
-const [Test, setTest] = useState("");
+  const [Test, setTest] = useState("");
 
 // Function to update state from form
 const handleClone = (formData) => {
@@ -16,11 +16,7 @@ const handleClone = (formData) => {
     setProduction(formData.firstField);
     setTest(formData.secondField);
     console.log("great")
-  } else {
-    // Handle validation failure (e.g., show error message, prevent state update)
-    // console.log("Validation failed: Production and Test must be 10 digits long");
-    // Optionally display error message or take other actions
-    // Example: setErrorPopupVisible(true);
+  } else {;
    alert('The two numbers should be 10 digits (10xxxxxxxx)');
   }
 };

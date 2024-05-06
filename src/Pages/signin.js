@@ -18,12 +18,13 @@ const SignIn = () => {
     // Simulated authentication logic (replace with your actual authentication logic)
     if (firstField === 'admin' && secondField === 'password') {
       // Successful authentication
-      alert('Login successful!'); // Replace with desired action upon successful login
+      // alert('Login successful!'); // Replace with desired action upon successful login
       setError('');
       navigate('/clone');
     } else {
       // Failed authentication
       setError('Invalid username or password');
+      alert("The User or password is incorrect")
     }
   };
 
@@ -31,9 +32,7 @@ const SignIn = () => {
     <div>
      
         <img className="mb-4" src={logo} alt="" width="72" height="72" />
-        {error && <p className="error-msg">{error}</p>} {/* Render error message if error state is truthy */}
-        
-        <MyForm
+                <MyForm
           title="Login"
           label1="User name"
           type1="text"

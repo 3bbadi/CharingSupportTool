@@ -38,8 +38,8 @@ const SDPMigration = () => {
       <MyForm
         title="SDP Migration"
         label1="Production number"
-        label2="#SDP"
-        type1="text" // Assuming type1 is for entering production number
+        label2="Migrate to SDP"
+        type1="number" // Assuming type1 is for entering production number
         type2="dropdown" // Assuming type2 should be a dropdown/select
         options={SDPsList} // Pass SDP options as props to MyForm component
         btn="Migrate"

@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route ,HashRouter } from 'react-router-dom';
 import SignIn from './Pages/signin';
 import Clone from './Pages/Clone';
 import SDPMigration from './Pages/SDPMigration';
@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 function App() {
   return (
-<BrowserRouter>
+<HashRouter >
 
       <div className="App">
       </div>
@@ -21,11 +21,8 @@ function App() {
       <Route path="/migration" element={<SDPMigration />}>          
       </Route>
 
-
-
-
   </Routes>
-</BrowserRouter>
+</HashRouter>
   );
 
 }
