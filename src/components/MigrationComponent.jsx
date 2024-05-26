@@ -1,36 +1,66 @@
-import React from 'react'
-import { Form, Button, Container } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import MyForm from "./myForm";
+import SDPsList from '../SDPs.json';
 import logo from '../img/VodafoneLogo.png';
 
-export const MigrationComponent = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
-    // Add logic to handle form submission here
-  };
-  return (
-    
-      <div>
-    <Form className="form-signin" onSubmit={handleSubmit}>
-      <img className="mb-4" src={logo} alt="" width="72" height="72" />
-      <h1 className="h3 mb-3 font-weight-normal">Login</h1>
-      <Form.Group controlId="inputEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Email address" required autoFocus />
-      </Form.Group>
-      <Form.Group controlId="inputPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" required />
-      </Form.Group>
-      <Form.Group controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Remember me" />
-      </Form.Group>
-      <Button variant="primary" type="submit" className="btn-lg btn-block">
-        Sign in
-      </Button>
-      <p className="faceIssueMSG" bg="danger" >If you face any issue please contact with charging support teams</p>
-    </Form>
-  </div>
-  )
-}
 
-export default MigrationComponent
+const MigrationComponent = () => {
+  const [SDP, setSDP] = useState([]);
+  const [productionNumber, setProductionNumber] = useState('');
+  const [loading, setLoading] = useState(false);
+  
+  useEffect(() => {
+    // Fetch SDP options from JSON file on component mount
+    setSDP(SDPsList);
+  }, []);
+
+  const handleMigration = async (formData) => {
+    setLoading(true);
+    
+    try {
+      const requestData = new URLSearchParams({
+        var1: formData.firstField,
+        var2: formData.secondField,
+      });
+
+      const response = await fetch('http://10.30.145.89/build/backend/migration.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: requestData,
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to execute script. Response not OK.');
+      }
+
+      const data = await response.text();
+      console.log('Response data:', data);
+      alert('Done');
+    } catch (error) {
+      console.error('Error executing script:', error);
+      alert('Failed to execute script. ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <MyForm
+        title="SDP Migration"
+        label1="Production number"
+        label2="Migrate to SDP"
+        type1="number"
+        type2="dropdown"
+        options={SDPsList}
+        btn={loading ? "Migrating..." : "Migrate"}
+        onSubmit={handleMigration}
+        disabled={loading}
+      />
+    </div>
+  );
+};
+
+export default MigrationComponent;
