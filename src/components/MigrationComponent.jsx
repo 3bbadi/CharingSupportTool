@@ -3,7 +3,6 @@ import MyForm from "./myForm";
 import SDPsList from '../SDPs.json';
 import logo from '../img/VodafoneLogo.png';
 
-
 const MigrationComponent = () => {
   const [SDP, setSDP] = useState([]);
   const [productionNumber, setProductionNumber] = useState('');
