@@ -1,5 +1,6 @@
 <?php
 // // Define the command you want to execute
+// 
 // $command = "ssh root@10.21.201.18 '/charging-ops/AllScripts/AIR_UCIP_Charging/clone_profile.sh 1007845787 1013097061'";
 
 // // Execute the command and capture the output
