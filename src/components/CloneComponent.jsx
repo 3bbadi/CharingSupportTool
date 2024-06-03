@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import logo from '../img/VodafoneLogo.png';
 import { Form, Button } from 'react-bootstrap';
+// import OPS_KEY from "../../API_KEYS/API_KEYS"
+import { API_URL } from '../../API_KEYS/API_KEYS';
+// import axios from 'axios';
 
 const CloneComponent = () => {
     const [number1, setNumber1] = useState('');
@@ -19,7 +22,7 @@ const CloneComponent = () => {
 
             console.log('Sending request to PHP file with the following data:', requestData.toString());
 
-            const response = await fetch('https://10.30.145.89/build/backend/clone.php', {
+            const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

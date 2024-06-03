@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import MyForm from "./myForm";
 import SDPsList from '../SDPs.json';
 import logo from '../img/VodafoneLogo.png';
+import { API_URL } from '../../API_KEYS/API_KEYS';
+
 
 const MigrationComponent = () => {
   const [SDP, setSDP] = useState([]);
@@ -22,7 +24,7 @@ const MigrationComponent = () => {
         var2: formData.secondField,
       });
 
-      const response = await fetch('http://10.30.145.89/build/backend/migration.php', {
+      const response = await fetch(API_URL , {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
